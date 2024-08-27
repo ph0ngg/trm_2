@@ -1,0 +1,7 @@
+{
+    "root":"/mnt/data_ubuntu/phongnn",
+    "train":
+    {
+        "mot17":"./data/mot17.train"
+    }
+}
