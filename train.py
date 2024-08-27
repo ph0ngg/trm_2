@@ -57,7 +57,7 @@ def train(
     # Initialize model
     #model = Darknet(cfg, dataset.nID)
     model1 = YOLOX()
-    model1.load_state_dict(torch.load('/mnt/data_ubuntu/phongnn/yolox_l.pth')['model'], strict = False)
+    model1.load_state_dict(torch.load('/kaggle/input/yolo-l/yolox_l.pth')['model'], strict = False)
 
     #model2 = Head2()
    # model2.load_state_dict(torch.load('/mnt/data_ubuntu/phongnn/Towards-Realtime-MOT/weights/run22_08_06_22/latest.pt')['model'])
@@ -126,10 +126,10 @@ def train(
             'Epoch', 'Batch', 'box', 'conf', 'id', 'total', 'nTargets', 'time'))
 
         # Freeze darknet53.conv.74 for first epoch
-        if freeze_backbone and (epoch < 2):
-            for i, (name, p) in enumerate(model.named_parameters()):
-                if int(name.split('.')[2]) < cutoff:  # if layer < 75
-                    p.requires_grad = False if (epoch == 0) else True
+        # if freeze_backbone and (epoch < 2):
+        #     for i, (name, p) in enumerate(model1.named_parameters()):
+        #         if int(name.split('.')[2]) < cutoff:  # if layer < 75
+        #             p.requires_grad = False if (epoch == 0) else True
 
         ui = -1
         rloss = defaultdict(float)  # running loss
